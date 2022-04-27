@@ -3,7 +3,6 @@
 # Fontes <br/>
 
  <br/>
- Cantata One <br/>
  Fira Sans <br/>
  
  # Variaveís de cores: <br/>
