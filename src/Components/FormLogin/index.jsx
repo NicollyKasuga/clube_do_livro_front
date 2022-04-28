@@ -22,7 +22,7 @@ export const FormLogin = () => {
 
     function handleLogin(data) {
         const {email, password} = data;
-
+        console.log(data)
 
 
     }
@@ -31,7 +31,7 @@ export const FormLogin = () => {
         <>
         <Form onSubmit={handleSubmit(handleLogin)}>
             <Input type="text" placeholder="Digite seu email" label="Email:" register={register} data={"email"} error={errors.email?.message}/>
-            <Input type="text" placeholder="Digite sua senha" label="Senha:" register={register} data={"password"} error={errors.password?.message}/>
+            <Input type="password" placeholder="Digite sua senha" label="Senha:" register={register} data={"password"} error={errors.password?.message}/>
             <LineDiv/>
             <Button text="Entrar"/>
         </Form>
