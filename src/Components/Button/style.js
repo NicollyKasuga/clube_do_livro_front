@@ -8,8 +8,10 @@ export const CustomButton = styled.button`
     color: white;
     font-weight: bold;
     margin-top: 25px;
+    box-sizing: border-box;
 
     &:hover{
       background: var(--lightnavyblue);
     }
+
 `
