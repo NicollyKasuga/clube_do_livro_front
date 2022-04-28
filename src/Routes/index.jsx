@@ -1,7 +1,8 @@
 import { Switch, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Signup } from "../Pages/Signup";
 
-function Routes() {
+export function Routes() {
     const history = useHistory();
 
     return(
@@ -12,8 +13,8 @@ function Routes() {
             <Route path="/Entrar">
 
             </Route>
-            <Route path="Cadastro">
-
+            <Route exact path="/Cadastro">
+                <Signup/>
             </Route>
         </Switch>
     )
