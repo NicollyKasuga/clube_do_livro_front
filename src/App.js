@@ -1,5 +1,5 @@
 import GlobalStyle from './GlobalStyle/style';
-import Routes from './Routes/index'
+import {Routes} from './Routes/index'
 
 function App() {
   return (

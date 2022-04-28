@@ -1,10 +1,11 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
 `
+
 export const FormDiv = styled.div`
     width: 50vw;
     height: 100vh;
@@ -17,7 +18,7 @@ export const FormDiv = styled.div`
     h1{
         text-align: center;
         color: var(--darkblue);
-        margin-bottom: 40px;
+        margin-bottom: 15px;
         font-size: 45px;
     }
 
@@ -25,8 +26,8 @@ export const FormDiv = styled.div`
         color: var(--navyblue);
     }
 
-    p{
+    .text{
+        margin-top: 20px;
         color: var(--grey);
     }
 `
-
