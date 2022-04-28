@@ -5,7 +5,6 @@ export const Container = styled.div`
     height: 100vh;
     display: flex;
 `
-
 export const FormDiv = styled.div`
     width: 50vw;
     height: 100vh;
@@ -30,3 +29,4 @@ export const FormDiv = styled.div`
         color: var(--grey);
     }
 `
+

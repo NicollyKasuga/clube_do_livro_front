@@ -16,7 +16,7 @@ export function Routes() {
                 <Login/>
             </Route>
             <Route exact path="/Cadastro">
-                <Signup/>
+                <Signup history={history}/>
             </Route>
         </Switch>
     )
