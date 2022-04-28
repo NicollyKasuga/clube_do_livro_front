@@ -1,13 +1,11 @@
-import {Container, ContainerImg, FormDiv} from './style'
-import clube_do_livro_semfundo from '../../Assets/clube_do_livro_semfundo.png'
+import {Container, FormDiv} from './style'
+import {ContainerImg} from '../../Components/ContainerImg/index'
 import {FormLogin} from '../../Components/FormLogin/index'
 
 export const Login = () => {
     return(
         <Container>
-        <ContainerImg>
-            <img src={clube_do_livro_semfundo} alt="Clube do Livro"></img>
-        </ContainerImg>
+        <ContainerImg/>
         <FormDiv>
             <h1>Bem-vindo</h1>
             <FormLogin/>

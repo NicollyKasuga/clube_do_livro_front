@@ -5,14 +5,6 @@ export const Container = styled.div`
     height: 100vh;
     display: flex;
 `
-export const ContainerImg = styled.div`
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    background: var(--darkblue);
-`
 
 export const FormDiv = styled.div`
     width: 50vw;
