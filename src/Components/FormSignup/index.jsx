@@ -33,7 +33,7 @@ export const FormSignup = () => {
             <Input label="Nome:" placeholder="Digite seu nome" type="text" register={register} data="name" error={errors.name?.message}/>
             <Input label="Email:" placeholder="Digite seu email" type="text" register={register} data="email" error={errors.email?.message}/>
             <Input label="Senha:" placeholder="Digite sua senha" type="password" register={register} data="password" error={errors.password?.message}/>
-            <Input label="Confirme sua senha:" placeholder="Confirme sua senha" type="password" register={register} data="password" error={errors.confirm_password?.message}/>
+            <Input label="Confirme sua senha:" placeholder="Confirme sua senha" type="password" register={register} data="confirm_password" error={errors.confirm_password?.message}/>
             <Button text='Cadastrar'/>
         </Form>
         </>
