@@ -4,7 +4,7 @@ import logo from '../../Assets/clube_do_livro_semfundo.png'
 export const ContainerImg = () => {
     return(
         <Container>
-            <img src={logo} ></img>
+            <img src={logo} alt="Clube do Livro"></img>
         </Container>
     )
 }
