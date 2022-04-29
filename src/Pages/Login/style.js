@@ -21,7 +21,7 @@ export const FormDiv = styled.div`
         font-size: 45px;
     }
 
-    span{
+    a{
         color: var(--navyblue);
     }
 
