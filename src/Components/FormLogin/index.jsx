@@ -22,8 +22,6 @@ export const FormLogin = ({ history, setAuthenticated }) => {
   });
 
   function handleLogin(data) {
-    console.log(data);
-
     api
       .post('/entrar', data)
       .then((response) => {

@@ -30,9 +30,8 @@ export const FormSignup = ({ history }) => {
   });
 
   function handleSignup(data) {
-    // const { name, email, password } = data;
     delete data.confirm_password;
-    console.log(data);
+
     api
       .post('/cadastro', data)
       .then((response) => {
