@@ -2,9 +2,14 @@ import {ContainerImg} from '../../Components/ContainerImg/index'
 import {FormDiv, Container} from './style'
 import {FormSignup} from '../../Components/FormSignup/index'
 import { LineDiv } from '../../Components/FormLogin/style'
+import { Redirect } from 'react-router-dom'
 
 
-export const Signup = (history) =>{
+export const Signup = ({history, authenticated}) =>{
+    
+    if (authenticated){
+        return <Redirect to="/"/>
+    }
 
     return(
         <Container>
