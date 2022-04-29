@@ -4,9 +4,11 @@ import {Button} from '../../Components/Button/index'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import api from '../../Service/index'
+import { toast } from 'react-toastify'
 
 
-export const FormSignup = () => {
+export const FormSignup = ({history}) => {
 
     const formSchema = yup.object().shape({
         name: yup.string().required("Nome obrigatório*"),
@@ -24,7 +26,16 @@ export const FormSignup = () => {
     });
 
     function handleSignup(data){
-        const {name, email, password, confirm_password} = data;
+        const {name, email, password} = data;
+
+        api.post("/user", data)
+        .then((response) => {
+            console.log(response)
+            toast.success("Usuário criado");
+
+            history.push("/Entrar");
+        })
+        .catch((err) => toast.error("Erro ao criar usuário"))
     };
 
     return(
