@@ -17,7 +17,7 @@ export const FormSignup = ({ history }) => {
       .min(6, 'Senha fraca*'),
     confirm_password: yup
       .string()
-      .required('Confrime sua senha*')
+      .required('Confirme sua senha*')
       .oneOf([yup.ref('password'), null], 'Senhas diferentes*'),
   });
 

@@ -27,7 +27,10 @@ export const FormLogin = ({ history, setAuthenticated }) => {
       .then((response) => {
         const { access_token } = response.data;
 
-        localStorage.setItem('@Clube_do_livro:token', access_token);
+        localStorage.setItem(
+          '@Clube_do_livro:token',
+          JSON.stringify(access_token),
+        );
         setAuthenticated(true);
 
         return history.push('/');
