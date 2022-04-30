@@ -23,7 +23,6 @@ export const FormLogin = ({history, setAuthenticated}) => {
     })
 
     function handleLogin(data) {
-        console.log(data);
         
         api.post("/sessions", data)
         .then(response => {

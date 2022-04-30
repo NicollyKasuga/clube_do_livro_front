@@ -6,7 +6,7 @@ export const MessageCard = ({send_user, currentChatMessages, currentChatName, me
     let is_user = false
     const user_id = 1
 
-    if (String(user_id) == String(send_user) ) {
+    if (String(user_id) === String(send_user) ) {
         is_user = true
     };
 
@@ -18,11 +18,9 @@ export const MessageCard = ({send_user, currentChatMessages, currentChatName, me
 
     useEffect(() =>{
         scrollToBottom()
-        console.log("rolou")
     }, [currentChatMessages, currentChatName])
 
 
-    console.log(is_user)
 
     return(
         <Container is_user={is_user}>
