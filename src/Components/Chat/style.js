@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import background from '../../Assets/background_message.png'
 
 export const ChatClosed = styled.button`
     width: 50px;
@@ -20,7 +21,7 @@ export const ChatClosed = styled.button`
 `
 
 export const ChatOpened = styled.div`
-    width: 450px;
+    width: 475px;
     height: 300px;
     background: #DEDEDE;
     position: absolute;
@@ -80,22 +81,114 @@ export const NavSearch = styled.div`
 export const ListOfUsers = styled.div`
     width: 100%;
     height: 75%;
-    background: green;
+    background: #DEDEDE;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 
 `
 
 export const ChatDisplay = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%
+    border-radius: 6px;
 `
 
 export const HeaderChat = styled.div`
+    background: #DEDEDE;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 6px;
+    
+    p{
+        color: black;
+        width: 165px;
+        max-width: 175px;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 19px;
+        white-space: nowrap;
+    }
+
+    .chat_icon_header{
+        width: 24px;
+        height: 35px;
+    }
+
+    .arrow_icon_header{
+        height: 22px;
+        width: 25px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
 
 `
 
 export const MessagesContainer = styled.div`
+    width:100%;
+    height: 60%;
+    background-image: url(${background});
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    overflow-y: auto;
+    justify-content: flex-start;
+
+    .background_color{
+        width: 100%;
+        height: 100%;
+        background: #ededed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+            width: 160px;
+        }
+    }
+
+}
 
 `
 
 export const InputContainer = styled.div`
+    width: 100%;
+    height: 15%;
+    background: #DEDEDE;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
+    div{
+        width: 175px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        border-radius: 8px;
+        background: white;
+    }
+
+    button{
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        justify-content: center;
+        background: #95D6D6;
+    }
+
+    .send_button_icon{
+        width: 20px;
+        height: 20px;
+        color: white;
+        margin-right: 2px;
+    }
 `

@@ -1,18 +1,31 @@
 import { Container } from "./style"
 import {FaUserCircle} from 'react-icons/fa'
+import api from '../../Service/index'
 
-export const CardUser = ({user, id}) => {
+export const CardUser = ({user, id, setCurrentChatName, setCurrentChatMessages }) => {
 
     function handleClick(e) {
-        console.log(e.getAttribute("data-id"))
+        const recieve_user_id = e.getAttribute("data-id")
+        const send_user_id = localStorage.getItem("user.id")
+
+
+        setCurrentChatName(e.getAttribute("data-user"))
+
+        // api.get("/messages", recieve_user_id, send_user_id)
+        // .then((response) =>{
+
+        //     setCurrentChatMessages(response.data)
+
+        // })
+        // .catch((err) => console.log(err));
     }
 
     return(
-        <Container onClick={(e) => handleClick(e.currentTarget)} data-id={id}>
-            <FaUserCircle/>
+        <Container onClick={(e) => handleClick(e.currentTarget)} data-id={id} data-user={user}>
+            <FaUserCircle className="user_icon"/>
             <div>
-                <p>{user}</p>
-                <p>last message</p>
+                <p className="user_name">{user}</p>
+                <p className="message">last message</p>
             </div>
 
         </Container>
