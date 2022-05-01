@@ -5,6 +5,7 @@ import { Signup } from '../Pages/Signup';
 import { Dashboard } from '../Pages/Dashboard/index';
 import { Login } from '../Pages/Login/index';
 import { useEffect } from 'react';
+import { ConfirmEmail } from '../Pages/ConfirmEmail';
 
 export function Routes() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -33,6 +34,9 @@ export function Routes() {
       </Route>
       <Route exact path="/cadastro">
         <Signup history={history} authenticated={authenticated} />
+      </Route>
+      <Route path="/confirmacao_de_email/:token">
+        <ConfirmEmail/>
       </Route>
     </Switch>
   );
