@@ -29,9 +29,7 @@ export const Chat = () =>{
     const [chatOpened, setChatOpened] = useState(false)
 
     function handleClick(){
-        console.log("clicado")
         setChatOpened(!chatOpened)
-        console.log(chatOpened)
     }
 
     return (
@@ -63,7 +61,7 @@ export const Chat = () =>{
                         <MdKeyboardArrowDown className='arrow_icon_header' onClick={() => handleClick()}/>
                     </HeaderChat>
                     <MessagesContainer>
-                        {currentChatMessages != 0 ? 
+                        {currentChatMessages.length > 0 ? 
                         (
                             currentChatMessages.map((message, index) => (
                                 <MessageCard key={index} send_user={message.send_id} currentChatName={currentChatName}
