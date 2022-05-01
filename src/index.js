@@ -5,14 +5,17 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 import { ChatSocketIoContextProvider } from './Contexts/ChatContext';
+import { AuthProvider } from './Contexts/Reader';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ChatSocketIoContextProvider>
-        <App />
-      </ChatSocketIoContextProvider>
+      <AuthProvider>
+        <ChatSocketIoContextProvider>
+          <App />
+        </ChatSocketIoContextProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );
