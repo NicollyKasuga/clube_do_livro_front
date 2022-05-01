@@ -4,7 +4,6 @@ import { Button } from '../Button/index';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import api from '../../Service/index';
 import { toast } from 'react-toastify';
 import { useAuth } from '../../Contexts/Reader';
 
@@ -27,6 +26,7 @@ export const FormLogin = ({ history, setAuthenticated }) => {
   function handleLogin(data) {
     try {
       signIn(data);
+      setAuthenticated(true);
     } catch (error) {
       toast.error('Email ou senha inválidos');
     }
