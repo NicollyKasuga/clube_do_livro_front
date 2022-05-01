@@ -6,6 +6,7 @@ import api from '../../Service';
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
+  const [allReaders, setAllReaders] = useState([]);
   const [data, setData] = useState(() => {
     const reader = localStorage.getItem('@Clube_do_livro:reader');
     const token = localStorage.getItem('@Clube_do_livro:token');
@@ -35,6 +36,15 @@ const AuthProvider = ({ children }) => {
     setData({});
   };
 
+  const getAllReaders = useCallback(async (accessToken) => {
+    const response = await api.get('/reader/all', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    setAllReaders(response.data);
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -42,6 +52,8 @@ const AuthProvider = ({ children }) => {
         accessToken: data.accessToken,
         signIn,
         signOut,
+        getAllReaders,
+        allReaders,
       }}
     >
       {children}
