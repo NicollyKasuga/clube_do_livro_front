@@ -6,8 +6,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import api from '../../Service/index';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../Contexts/Reader';
 
 export const FormLogin = ({ history, setAuthenticated }) => {
+  const { signIn } = useAuth();
+
   const formSchema = yup.object().shape({
     email: yup.string().required('Email obrigatório').email('Email inválido'),
     password: yup.string().required('Insira uma senha'),
@@ -22,20 +25,11 @@ export const FormLogin = ({ history, setAuthenticated }) => {
   });
 
   function handleLogin(data) {
-    api
-      .post('/entrar', data)
-      .then((response) => {
-        const { access_token } = response.data;
-
-        localStorage.setItem(
-          '@Clube_do_livro:token',
-          JSON.stringify(access_token),
-        );
-        setAuthenticated(true);
-
-        return history.push('/');
-      })
-      .catch((err) => toast.error('Email ou senha inválidos'));
+    try {
+      signIn(data);
+    } catch (error) {
+      toast.error('Email ou senha inválidos');
+    }
   }
 
   return (
