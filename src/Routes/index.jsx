@@ -1,37 +1,41 @@
-import { Switch, Route } from "react-router-dom";
-import { useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Signup } from "../Pages/Signup";
-import { Dashboard } from "../Pages/Dashboard/index";
-import { Login } from "../Pages/Login/index"
-import { useEffect } from "react";
+import { Switch, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Signup } from '../Pages/Signup';
+import { Dashboard } from '../Pages/Dashboard/index';
+import { Login } from '../Pages/Login/index';
+import { useEffect } from 'react';
 
 export function Routes() {
-    const [authenticated, setAuthenticated] = useState(false);
-    
-    useEffect(() =>{
-        const token = JSON.parse(localStorage.getItem("@Clube_do_livro:token"));
+  const [authenticated, setAuthenticated] = useState(false);
 
-         if(token) {
-             return setAuthenticated(true);
-         }
-    },[authenticated])
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('@Clube_do_livro:token'));
 
-    const history = useHistory();
+    if (token) {
+      return setAuthenticated(true);
+    }
+  }, [authenticated]);
 
-    return(
-        <Switch>
-            <Route exact path="/">
-                <Dashboard authenticated={authenticated}/>
-            </Route>
-            <Route exact path="/Entrar">
-                <Login history={history} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
-            </Route>
-            <Route exact path="/Cadastro">
-                <Signup history={history} authenticated={authenticated}/>
-            </Route>
-        </Switch>
-    )
+  const history = useHistory();
+
+  return (
+    <Switch>
+      <Route exact path="/">
+        <Dashboard authenticated={authenticated} />
+      </Route>
+      <Route exact path="/entrar">
+        <Login
+          history={history}
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+        />
+      </Route>
+      <Route exact path="/cadastro">
+        <Signup history={history} authenticated={authenticated} />
+      </Route>
+    </Switch>
+  );
 }
 
 export default Routes;
