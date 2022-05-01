@@ -10,7 +10,7 @@ export function Routes() {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('@Clube_do_livro:token'));
+    const token = localStorage.getItem('@Clube_do_livro:token');
 
     if (token) {
       return setAuthenticated(true);

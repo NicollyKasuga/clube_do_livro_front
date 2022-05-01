@@ -1,20 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createContext, useContext } from 'react';
 import { io } from 'socket.io-client';
 
 const ChatSocketIoContext = createContext({});
+const SOCKET_URI = 'http://localhost:5001';
+// const SOCKET_URI = process.env.REACT_APP_SOCKET;
 
 const ChatSocketIoContextProvider = ({ children }) => {
-  const [SocketIO, setSocketIO] = useState(null);
+  const [SocketIO, setSocketIO] = useState(useCallback(() => io(SOCKET_URI)));
+  const [chatInfo, setChatInfo] = useState({});
 
-  // const SOCKET_URI = process.env.REACT_APP_SOCKET;
-  useEffect(() => {
-    const SOCKET_URI = 'ws://localhost:5000';
-    setSocketIO(io(SOCKET_URI));
-  }, []);
+  // useEffect(() => {
+  //   setSocketIO(io(SOCKET_URI));
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log(SocketIO);
+  // }, [SocketIO]);
 
   return (
-    <ChatSocketIoContext.Provider value={{ SocketIO }}>
+    <ChatSocketIoContext.Provider value={{ SocketIO, chatInfo, setChatInfo }}>
       {children}
     </ChatSocketIoContext.Provider>
   );
