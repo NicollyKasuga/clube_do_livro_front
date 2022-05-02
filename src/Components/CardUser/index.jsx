@@ -15,17 +15,17 @@ export const CardUser = ({
 
   const usersRooms = [
     {
-      reader_id: '88e67f7c-a147-4f77-8957-8bb9390ded1c',
+      reader_id: '30704549-5d33-4a01-801d-6973f3b48222',
       name: 'Thatiane',
       rooms: [1, 2],
     },
     {
-      reader_id: '22a54145-0d75-4b2d-8c22-b3f54ba0a6d1',
+      reader_id: 'b36beb6b-876a-4693-bb0d-3fc2f7881bcd',
       name: 'Rafael',
       rooms: [2, 3],
     },
     {
-      reader_id: '5b2c61b5-ef7c-40cc-8f3c-f289dddb70ce',
+      reader_id: '02909db3-10c1-4586-a490-4bee0800be24',
       name: 'Livia',
       rooms: [1, 3],
     },
@@ -34,6 +34,9 @@ export const CardUser = ({
   function handleJoinRoom(e) {
     const receiver_id = e.getAttribute('data-id');
     const sender_id = reader.reader_id;
+
+    console.log(receiver_id);
+    console.log(sender_id);
 
     setCurrentChatName(user);
 
