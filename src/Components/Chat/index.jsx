@@ -30,7 +30,7 @@ export const Chat = () => {
   const [users, setUsers] = useState([]);
 
   const getAllReaders = useCallback(async (accessToken) => {
-    const response = await api.get('/reader/all', {
+    const response = await api.get('/readers', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
