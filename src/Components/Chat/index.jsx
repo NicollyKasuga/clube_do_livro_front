@@ -12,7 +12,7 @@ import {
 import { MessageCard } from '../MessageCard';
 import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import { CardUser } from '../CardUser';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { FiSend } from 'react-icons/fi';
@@ -20,7 +20,6 @@ import bemvindo_logo from '../../Assets/bemvindo_logo.png';
 import { useAuth } from '../../Contexts/Reader';
 import { useEffect } from 'react';
 
-import api from '../../Service';
 import { useChatSocketIo } from '../../Contexts/ChatContext';
 
 export const Chat = () => {
