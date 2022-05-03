@@ -92,7 +92,7 @@ export const Chat = () => {
                     currentChatName={currentChatName}
                     currentChatMessages={currentChatMessages}
                     message={message.message_text}
-                    hour={'hoje'}
+                    hour={message.created_at}
                   />
                 ))
               ) : (
