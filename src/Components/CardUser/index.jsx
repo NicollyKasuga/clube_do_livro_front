@@ -31,7 +31,7 @@ export const CardUser = ({
 
     SocketIO.emit('join_room', chatInfo);
 
-    const currentRoomMessages = await get_messages(roomId);
+    const currentRoomMessages = await get_messages(roomId, accessToken);
     setCurrentChatMessages(currentRoomMessages);
   }
 

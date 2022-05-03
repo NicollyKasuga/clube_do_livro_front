@@ -28,18 +28,30 @@ const ChatSocketIoContextProvider = ({ children }) => {
     return response.data.room_id;
   }, []);
 
-  const get_messages = useCallback(async (room_id) => {
-    const response = await api.get(`/chat/rooms/messages?room_id=${room_id}`);
+  const get_messages = useCallback(async (room_id, accessToken) => {
+    const response = await api.get(`/chat/rooms/messages?room_id=${room_id}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     return response.data;
   }, []);
 
-  const saveMessage = useCallback(async (data) => {
+  const saveMessage = useCallback(async (data, accessToken) => {
     const { sender_id, room_id, message_text } = data;
-    const response = await api.post('/chat/rooms/messages', {
-      sender_id,
-      room_id,
-      message_text,
-    });
+    const response = await api.post(
+      '/chat/rooms/messages',
+      {
+        sender_id,
+        room_id,
+        message_text,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
     return response.data;
   }, []);
 
