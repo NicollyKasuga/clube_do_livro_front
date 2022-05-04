@@ -10,7 +10,8 @@ export const CardUser = ({
   setCurrentChatName,
   setCurrentChatMessages,
 }) => {
-  const { SocketIO, setChatInfo, getRooms, get_messages } = useChatSocketIo();
+  const { SocketIO, setChatInfo, getRooms, get_messages, createRoom } =
+    useChatSocketIo();
   const { reader, accessToken } = useAuth();
 
   async function handleJoinRoom(e) {
@@ -19,7 +20,11 @@ export const CardUser = ({
 
     setCurrentChatName(user);
 
-    const roomId = await getRooms(senderId, receiverId, accessToken);
+    let roomId = await getRooms(senderId, receiverId, accessToken);
+
+    if (!roomId) {
+      roomId = await createRoom(senderId, receiverId, accessToken);
+    }
 
     const chatInfo = {
       sender_id: senderId,
