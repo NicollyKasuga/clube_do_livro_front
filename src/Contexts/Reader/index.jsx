@@ -20,13 +20,8 @@ const AuthProvider = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-<<<<<<< HEAD
-    const response = await api.post('/entrar', { email, password });
-    console.log(response)
-=======
     const response = await api.post('/readers/entrar', { email, password });
 
->>>>>>> 477de4bc2ac7171d2ac3510a873a4ef2aa4fd70f
     const { access_token: accessToken } = response.data;
     const reader = jwt_decode(accessToken).sub;
     delete reader.avatar;
@@ -36,34 +31,43 @@ const AuthProvider = ({ children }) => {
     setData({ reader, accessToken });
   }, []);
 
-  const signUp = ({token}) =>{
+  const signUp = ({ token }) => {
+    api
+      .post(`/register_reader/${token}`)
+      .then((response) => {
+        toast.success('Faça seu Login!');
+      })
+      .catch((err) => {
+        if (err.status === 409) {
+          console.log(err);
+          toast.error('Email já cadastrado!', {
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+        console.log(err);
+        return err.status < 500;
+      });
+  };
 
-    api.post(`/register_reader/${token}`).then((response) =>{
-      toast.success("Faça seu Login!")
-    }).catch((err) =>{
-       if (err.status === 409) {
-        console.log(err)
-        toast.error("Email já cadastrado!", {
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-       })}
-       console.log(err)
-      return err.status < 500
-    })
-
-  }
-
-  const sendEmail = ({data}) => {
-    console.log(data)
-    api.post("/cadastro", data).then((response) => {
-      console.log(response)
-      toast.success("Verifique seu email para confirmação de criação da conta!")
-    }).catch((err) => {return err.status < 500})
-  }
+  const sendEmail = ({ data }) => {
+    console.log(data);
+    api
+      .post('/readers/cadastro', data)
+      .then((response) => {
+        console.log(response);
+        toast.success(
+          'Verifique seu email para confirmação de criação da conta!',
+        );
+      })
+      .catch((err) => {
+        return err.status < 500;
+      });
+  };
 
   const signOut = () => {
     localStorage.removeItem('@Clube_do_livro:reader');
