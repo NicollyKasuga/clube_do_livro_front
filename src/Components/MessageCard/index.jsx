@@ -1,7 +1,6 @@
 import { Container } from './style';
 import { useEffect, useRef } from 'react';
 import { useAuth } from '../../Contexts/Reader';
-import { string } from 'yup';
 import { useState } from 'react';
 
 export const MessageCard = ({

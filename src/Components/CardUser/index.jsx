@@ -1,6 +1,5 @@
 import { Container } from './style';
 import { FaUserCircle } from 'react-icons/fa';
-import api from '../../Service/index';
 import { useChatSocketIo } from '../../Contexts/ChatContext';
 import { useAuth } from '../../Contexts/Reader';
 

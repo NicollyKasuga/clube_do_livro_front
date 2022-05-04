@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { createContext, useContext } from 'react';
 import { io } from 'socket.io-client';
 import api from '../../Service';
@@ -13,8 +13,6 @@ const ChatSocketIoContextProvider = ({ children }) => {
     }, []),
   );
   const [chatInfo, setChatInfo] = useState({});
-  const [roomId, setRoomId] = useState('');
-  const [currentRoomMessages, setCurrentRoomMessages] = useState([]);
 
   const getRooms = useCallback(async (senderId, receiverId, accessToken) => {
     const response = await api.get(
@@ -75,9 +73,7 @@ const ChatSocketIoContextProvider = ({ children }) => {
         chatInfo,
         setChatInfo,
         getRooms,
-        roomId,
         get_messages,
-        currentRoomMessages,
         saveMessage,
         createRoom,
       }}
