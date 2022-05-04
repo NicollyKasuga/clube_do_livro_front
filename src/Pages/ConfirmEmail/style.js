@@ -41,5 +41,24 @@ export const Container = styled.div`
         margin: 30px;
         color: #63ced9;
     }
+
+    a {
+    width: 310px;
+    height: 40px;
+    border-radius: 3px;
+    background: var(--navyblue);
+    color: white;
+    font-weight: bold;
+    margin-top: 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+      background: var(--lightnavyblue);
+    }
+    }
       
 `

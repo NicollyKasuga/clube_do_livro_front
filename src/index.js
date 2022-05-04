@@ -4,13 +4,20 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
+import { ChatSocketIoContextProvider } from './Contexts/ChatContext';
+import { AuthProvider } from './Contexts/Reader';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <ChatSocketIoContextProvider>
+          <App />
+        </ChatSocketIoContextProvider>
+      </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

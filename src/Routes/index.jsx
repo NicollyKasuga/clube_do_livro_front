@@ -36,7 +36,7 @@ export function Routes() {
         <Signup history={history} authenticated={authenticated} />
       </Route>
       <Route path="/confirmacao_de_email/:token">
-        <ConfirmEmail/>
+        <ConfirmEmail history={history}/>
       </Route>
     </Switch>
   );
