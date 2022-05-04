@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
     api.post(`/register_reader/${token}`).then((response) =>{
       toast.success("Faça seu Login!")
     }).catch((err) =>{
-       if (err.status !== 500) {
+       if (err.status === 409) {
         console.log(err)
         toast.error("Email já cadastrado!", {
         autoClose: 5000,
@@ -46,6 +46,7 @@ const AuthProvider = ({ children }) => {
         draggable: true,
         progress: undefined,
        })}
+       console.log(err)
       return err.status < 500
     })
 
