@@ -9,6 +9,7 @@ export const CustomButton = styled.button`
     font-weight: bold;
     margin-top: 25px;
     box-sizing: border-box;
+    cursor: pointer;
 
     &:hover{
       background: var(--lightnavyblue);

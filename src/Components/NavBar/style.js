@@ -29,10 +29,16 @@ export const Container = styled.div`
         color: white;
     }
 
-    .user_button{
+    .user_button, .logout_user{
         width: 35px;
         height: 35px;
         background: none;
+    }
+
+    .logout_icon{
+        width: 25px;
+        height: 25px;
+        color: white;
     }
 
 `

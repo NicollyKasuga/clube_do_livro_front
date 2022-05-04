@@ -1,9 +1,11 @@
+import { Chat } from "../../Components/Chat"
 import { NavBar } from "../../Components/NavBar/indes"
 
-export const Dashboard = () => {
+export const Dashboard = ({history}) => {
     return(
         <>
-        <NavBar/>
+        <NavBar history={history}/>
+        <Chat/>
         </>
     )
 }

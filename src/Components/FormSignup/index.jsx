@@ -6,8 +6,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import api from '../../Service/index';
 import { toast } from 'react-toastify';
+import {useAuth} from "../../Contexts/Reader"
 
 export const FormSignup = ({ history }) => {
+
+  const {sendEmail} = useAuth()
+
+
   const formSchema = yup.object().shape({
     name: yup.string().required('Nome obrigatório*'),
     email: yup.string().required('Email obrigatório*').email('Email inválido*'),
@@ -32,16 +37,9 @@ export const FormSignup = ({ history }) => {
   function handleSignup(data) {
     delete data.confirm_password;
 
-    api
-      .post('/cadastro', data)
-      .then((response) => {
-        toast.success('Usuário criado');
+    sendEmail({data})
 
-        history.push('/entrar');
-      })
-      .catch((err) => toast.error('Erro ao criar usuário'));
   }
-
   return (
     <>
       <Form onSubmit={handleSubmit(handleSignup)}>
