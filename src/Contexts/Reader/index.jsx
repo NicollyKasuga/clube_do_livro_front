@@ -53,9 +53,11 @@ const AuthProvider = ({ children }) => {
   }
 
   const sendEmail = ({data}) => {
+    console.log(data)
     api.post("/cadastro", data).then((response) => {
+      console.log(response)
       toast.success("Verifique seu email para confirmação de criação da conta!")
-    }).catch((err) => console.log(err))
+    }).catch((err) => {return err.status < 500})
   }
 
   const signOut = () => {
