@@ -20,13 +20,8 @@ const AuthProvider = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-<<<<<<< HEAD
-    const response = await api.post('/entrar', { email, password });
-    console.log(response)
-=======
     const response = await api.post('/readers/entrar', { email, password });
-
->>>>>>> 477de4bc2ac7171d2ac3510a873a4ef2aa4fd70f
+    console.log(response.data)
     const { access_token: accessToken } = response.data;
     const reader = jwt_decode(accessToken).sub;
     delete reader.avatar;
@@ -38,7 +33,7 @@ const AuthProvider = ({ children }) => {
 
   const signUp = ({token}) =>{
 
-    api.post(`/register_reader/${token}`).then((response) =>{
+    api.post(`/readers/register_reader/${token}`).then((response) =>{
       toast.success("Faça seu Login!")
     }).catch((err) =>{
        if (err.status === 409) {
@@ -59,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
   const sendEmail = ({data}) => {
     console.log(data)
-    api.post("/cadastro", data).then((response) => {
+    api.post("/reader/cadastro", data).then((response) => {
       console.log(response)
       toast.success("Verifique seu email para confirmação de criação da conta!")
     }).catch((err) => {return err.status < 500})
