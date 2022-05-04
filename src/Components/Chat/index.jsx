@@ -29,6 +29,7 @@ export const Chat = () => {
   const [currentChatName, setCurrentChatName] = useState('');
   const [currentMessage, setCurrentMessage] = useState('');
   const [currentChatMessages, setCurrentChatMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     if (chatOpened) {
@@ -57,12 +58,21 @@ export const Chat = () => {
             <NavSearch>
               <div className="div_input">
                 <AiOutlineSearch className="search_icon" />
-                <input type="text" placeholder="Nome da pesquisa..."></input>
+                <input
+                  onChange={(e) => setInputValue(e.target.value)}
+                  type="text"
+                  placeholder="Nome da pesquisa..."
+                ></input>
               </div>
             </NavSearch>
             <ListOfUsers>
               {allReaders
                 .filter((user) => user.reader_id !== reader.reader_id)
+                .filter((user) =>
+                  inputValue
+                    ? user.name.toLowerCase().includes(inputValue.toLowerCase())
+                    : user,
+                )
                 .map((user, index) => (
                   <CardUser
                     user={user.name}
