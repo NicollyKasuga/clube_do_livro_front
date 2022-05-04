@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
 
   const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('/readers/entrar', { email, password });
-    console.log(response.data)
     const { access_token: accessToken } = response.data;
     const reader = jwt_decode(accessToken).sub;
     delete reader.avatar;
