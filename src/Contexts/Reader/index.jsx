@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('/entrar', { email, password });
+    const response = await api.post('/readers/entrar', { email, password });
 
     const { access_token: accessToken } = response.data;
     const reader = jwt_decode(accessToken).sub;
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const getAllReaders = useCallback(async (accessToken) => {
-    const response = await api.get('/reader/all', {
+    const response = await api.get('/readers', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

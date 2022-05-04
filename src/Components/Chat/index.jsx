@@ -12,7 +12,7 @@ import {
 import { MessageCard } from '../MessageCard';
 import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import { CardUser } from '../CardUser';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { FiSend } from 'react-icons/fi';
@@ -20,23 +20,16 @@ import bemvindo_logo from '../../Assets/bemvindo_logo.png';
 import { useAuth } from '../../Contexts/Reader';
 import { useEffect } from 'react';
 
-import api from '../../Service';
 import { useChatSocketIo } from '../../Contexts/ChatContext';
 
 export const Chat = () => {
   const { chatInfo, SocketIO } = useChatSocketIo();
-  const { accessToken, reader } = useAuth();
+  const { accessToken, reader, getAllReaders, allReaders } = useAuth();
   const [chatOpened, setChatOpened] = useState(false);
-  const [users, setUsers] = useState([]);
-
-  const getAllReaders = useCallback(async (accessToken) => {
-    const response = await api.get('/readers', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    setUsers(response.data);
-  }, []);
+  const [currentChatName, setCurrentChatName] = useState('');
+  const [currentMessage, setCurrentMessage] = useState('');
+  const [currentChatMessages, setCurrentChatMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     if (chatOpened) {
@@ -44,18 +37,14 @@ export const Chat = () => {
     }
   }, [chatOpened]);
 
-  const [currentChatName, setCurrentChatName] = useState('');
-  const [currentMessage, setCurrentMessage] = useState('');
-  const [currentChatMessages, setCurrentChatMessages] = useState([]);
-
-  function sendMessage() {
-    chatInfo.message = currentMessage;
-    SocketIO.emit('send_message', chatInfo);
-  }
-
   SocketIO.on('receive_message', (data) => {
     setCurrentChatMessages([...currentChatMessages, data]);
   });
+
+  function sendMessage() {
+    chatInfo.message_text = currentMessage;
+    SocketIO.emit('send_message', chatInfo, accessToken);
+  }
 
   function handleClick() {
     setChatOpened(!chatOpened);
@@ -69,12 +58,21 @@ export const Chat = () => {
             <NavSearch>
               <div className="div_input">
                 <AiOutlineSearch className="search_icon" />
-                <input type="text" placeholder="Nome da pesquisa..."></input>
+                <input
+                  onChange={(e) => setInputValue(e.target.value)}
+                  type="text"
+                  placeholder="Nome da pesquisa..."
+                ></input>
               </div>
             </NavSearch>
             <ListOfUsers>
-              {users
+              {allReaders
                 .filter((user) => user.reader_id !== reader.reader_id)
+                .filter((user) =>
+                  inputValue
+                    ? user.name.toLowerCase().includes(inputValue.toLowerCase())
+                    : user,
+                )
                 .map((user, index) => (
                   <CardUser
                     user={user.name}
@@ -103,8 +101,8 @@ export const Chat = () => {
                     send_user={message.sender_id}
                     currentChatName={currentChatName}
                     currentChatMessages={currentChatMessages}
-                    message={message.message}
-                    hour={message.hora}
+                    message={message.message_text}
+                    hour={message.created_at}
                   />
                 ))
               ) : (
