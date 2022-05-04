@@ -22,7 +22,7 @@ export function Routes() {
   return (
     <Switch>
       <Route exact path="/">
-        <Dashboard authenticated={authenticated} />
+        <Dashboard history={history} authenticated={authenticated} />
       </Route>
       <Route exact path="/entrar">
         <Login
