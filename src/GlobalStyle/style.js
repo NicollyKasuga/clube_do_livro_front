@@ -14,10 +14,12 @@ const GlobalStyle = createGlobalStyle`
     --blue: #405673;
     --navyblue: #7ABFBF;
     --lightnavyblue: #98D6D6;
-    --white: #DEDEDE;
+    --lightnavyblue-80 : #95D6D6
+    --gray-80: #DEDEDE;
     --lightblue: #52B5F2;
     --grey: #6C7D8C;
     --lightgrey: #9398A2;
+    --red: #FF4D4D;
 
 }
 
@@ -53,6 +55,10 @@ button{
 
 a{
     text-decoration: none;
+}
+
+input{
+    border: none
 }
 `
 
