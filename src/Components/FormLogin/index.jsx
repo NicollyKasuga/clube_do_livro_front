@@ -8,8 +8,9 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../../Contexts/Reader';
 
 export const FormLogin = ({ history, setAuthenticated }) => {
-  const { signIn } = useAuth();
 
+  const {signIn} = useAuth();
+  
   const formSchema = yup.object().shape({
     email: yup.string().required('Email obrigatório').email('Email inválido'),
     password: yup.string().required('Insira uma senha'),
