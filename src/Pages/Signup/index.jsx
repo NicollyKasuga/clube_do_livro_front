@@ -8,6 +8,8 @@ export const Signup = ({ history, authenticated }) => {
   if (authenticated) {
     return <Redirect to="/" />;
   }
+  
+
 
   return (
     <Container>
