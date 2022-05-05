@@ -23,7 +23,7 @@ import { useEffect } from 'react';
 import { useChatSocketIo } from '../../Contexts/ChatContext';
 
 export const Chat = () => {
-  const { chatInfo, SocketIO } = useChatSocketIo();
+  const { chatInfo, SocketIO, saveMessage } = useChatSocketIo();
   const { accessToken, reader, getAllReaders, allReaders } = useAuth();
   const [chatOpened, setChatOpened] = useState(false);
   const [currentChatName, setCurrentChatName] = useState('');
@@ -41,9 +41,10 @@ export const Chat = () => {
     setCurrentChatMessages([...currentChatMessages, data]);
   });
 
-  function sendMessage() {
+  async function sendMessage() {
     chatInfo.message_text = currentMessage;
-    SocketIO.emit('send_message', chatInfo, accessToken);
+    const response = await saveMessage(chatInfo, accessToken);
+    SocketIO.emit('send_message', response);
   }
 
   function handleClick() {
