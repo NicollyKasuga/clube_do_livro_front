@@ -8,7 +8,7 @@ const ChatSocketIoContext = createContext({});
 const ChatSocketIoContextProvider = ({ children }) => {
   const [SocketIO, setSocketIO] = useState(
     useCallback(() => {
-      const SOCKET_URI = process.env.REACT_APP_SOCKET_URI;
+      const SOCKET_URI = 'https://clube-do-livro-chat-backend.herokuapp.com/';
       return io(SOCKET_URI);
     }, []),
   );
