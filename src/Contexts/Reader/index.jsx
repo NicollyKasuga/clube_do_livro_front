@@ -75,6 +75,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const getAllReaders = useCallback(async (accessToken) => {
+    console.log(accessToken)
     const response = await api.get('/readers', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
