@@ -4,11 +4,12 @@ import { useEffect } from "react"
 
 export const Dashboard = ({history, authenticated}) => {
 
-   useEffect(()=>{
-        if(!authenticated){
-            return history.push("/Entrar")
-        }
-   }, [])
+//    useEffect(()=>{
+//         if(!authenticated){
+//             return history.push("/Entrar")
+//         }
+//    }, [])
+
 
     return(
         <>

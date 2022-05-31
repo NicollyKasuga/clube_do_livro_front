@@ -84,6 +84,15 @@ const AuthProvider = ({ children }) => {
     setAllReaders(response.data);
   }, []);
 
+  const createBook = async ({data}) =>{
+    const {file} = data
+    const uploadImage = await api.post('/upload', file[0])
+    .then((response) => {
+        console.log(response)
+    }).catch((err) => console.log(err))
+
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -95,6 +104,7 @@ const AuthProvider = ({ children }) => {
         sendEmail,
         getAllReaders,
         allReaders,
+        createBook
       }}
     >
       {children}

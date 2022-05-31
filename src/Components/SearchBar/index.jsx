@@ -5,7 +5,7 @@ export const SearchBar = () => {
 
     return(
         <Container>
-        <Input placeholder='Pesquise aqui'></Input>
+        <Input className='input_nav' placeholder='Pesquise aqui'></Input>
         <Button>
         <AiOutlineSearch className='search_icon'/>
         </Button>

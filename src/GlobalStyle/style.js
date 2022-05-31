@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body{
-    background: white;
+    background: #EFEFEF;
     color: var(--blue);
     font-family: 'Fira Sans', sans-serif;
 
